@@ -42,6 +42,8 @@ public class ReqresTest {
 
         Assert.assertTrue(emails.stream().allMatch(x->x.endsWith("reqres.in"))); // перебираем через стримапи список
         // email-ов и проверяем, что каждый из них заканчивается на требуемое значение
+        Assert.assertTrue(avatars.stream().allMatch(x->x.startsWith("https"))); // перебираем через стримапи список
+        // аватаров и проверяем, что каждый из них начинается на требуемое значение
     }
 
 
@@ -54,7 +56,8 @@ public class ReqresTest {
         List<UserDataPojo> users = given()
                 .get("")
                 .then().log().all()
-                .extract().body().jsonPath().getList("data", UserDataPojo.class);
+                .extract().body().jsonPath().getList("data", UserDataPojo.class); // извлекаем необходимый для дальнейшей
+        // работы массив в pojo-класс
         users.forEach(x-> Assert.assertTrue(x.getAvatar().contains(x.getId().toString()))); // спомощью цикла проверяем
         // что Аватары содержат в себе айди
         Assert.assertTrue(users.stream().allMatch(x->x.getEmail().endsWith("reqres.in"))); // с помощью стрима проверяем

@@ -48,7 +48,7 @@ public class ReqresTest {
 
 
     /**
-     * Тест с использованием Pojo-класса
+     * Тест с использованием Pojo-класса 2
      */
     @Test
     public void checkAvatarsAndIdPojoTest(){
@@ -64,7 +64,7 @@ public class ReqresTest {
         // что почта заканчивается на нужное значение.
 
         /**
-         * Альтернативная проверка содержания в Аватарах айдишников
+         * Альтернативная проверка содержания в Аватарах айдишников 1
          */
         List<String> avatars = users.stream().map(UserDataPojo::getAvatar).collect(Collectors.toList()); // извлекаем в список все аватары
         List<String> ids = users.stream().map(x->x.getId().toString()).collect(Collectors.toList()); // извлекаем в список все айди, а
